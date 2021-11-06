@@ -1,0 +1,30 @@
+<canvas id='Letra' width=600 height=600></canvas>
+<script>
+function sumaTran(a,b){
+var s = [];
+for (i=0; i<a.length; i+=2){
+s[i]=(a[i]+b[0])
+s[i+1]=(a[i+1]+b[1])
+}
+return s;
+}
+function polygon(a, Borde , Relleno, Lineagrosor){
+ctx.beginPath();
+ctx.strokeStyle = Borde ;
+ctx.fillStyle = Relleno;
+ctx.lineWidth =Lineagrosor;
+ctx.moveTo(a[0],a[1]);
+for (var i=2; i< a.length; i+=2)
+ctx.lineTo(a[i], a[i+1]);
+ctx.closePath();
+ctx.stroke();
+ctx.fill();
+}
+var c = document.getElementById('Letra')
+var ctx = c.getContext('2d')
+var letra_A =[40,40,80,40,120,100,80,100,60,60,50,80,70,80,75,90,45,90,40,100,0,100];
+var vt = [250,350];
+var letraTrans = sumaTran(letra_A, vt);
+polygon(letra_A, 'yellow', 'blue',3)
+polygon(letraTrans, 'yellow', 'blue',3)
+</script>
